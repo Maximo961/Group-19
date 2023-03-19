@@ -1,0 +1,8 @@
+# Ignore mac files
+.DS_Store
+
+# Ignore IDE files
+/.idea/
+
+# Ignore output/build files
+/target/
