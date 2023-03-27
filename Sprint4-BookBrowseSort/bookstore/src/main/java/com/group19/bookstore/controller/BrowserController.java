@@ -20,7 +20,7 @@ public class BrowserController {
     @GetMapping("/genre/{genre}")
     public ResponseEntity <List<Book>> getBooksByGenre(@PathVariable ("genre") String genre) {
         List<Book> books = bookRepository.findBooksByGenre(genre);
-        return new ResponseEntity <> (books, HttpStatus.OK);
+        return new ResponseEntity <> (books);
     }
 
     @GetMapping("/rating/{rating}")
