@@ -16,4 +16,6 @@ public class Book {
     private String title;
     private Integer unitsSold;
     private Double discount;
+    private Integer volume;
+    private String isbn;
 }
