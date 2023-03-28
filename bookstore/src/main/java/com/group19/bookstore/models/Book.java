@@ -15,8 +15,7 @@ public class Book {
     private Double rating;
     private String title;
     private Integer unitsSold;
-
+    private Double discount;
     private Integer volume;
-
     private String isbn;
 }
