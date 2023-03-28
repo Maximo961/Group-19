@@ -16,4 +16,8 @@ public interface BookDetailsController {
     @ResponseBody
     List<Book> getBooksByAuthorId(@PathVariable String authorId);
 
+    @GetMapping(value = "/isbn/{isbn}", produces = APPLICATION_JSON_VALUE)
+    @ResponseBody
+    Book getBookByIsbn(@PathVariable String isbn);
+
 }

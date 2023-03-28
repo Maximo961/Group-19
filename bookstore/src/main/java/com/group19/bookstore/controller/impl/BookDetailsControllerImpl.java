@@ -46,4 +46,17 @@ public class BookDetailsControllerImpl implements BookDetailsController {
 
         return authorBooks;
     }
+
+    @Override
+    public Book getBookByIsbn(String isbn) {
+        Book book = bookDao.retrieveBookByIsbn(isbn);
+
+        if (book == null) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Count not find book for given isbn: " + isbn
+            );
+        }
+
+        return book;
+    }
 }

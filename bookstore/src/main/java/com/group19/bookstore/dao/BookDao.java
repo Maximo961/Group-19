@@ -12,6 +12,8 @@ public interface BookDao {
 
     List<Book> retrieveAll();
 
+    Book retrieveBookByIsbn(String isbn);
+
     void insertBook(Book book);
 
     void updateBook(Book book);
