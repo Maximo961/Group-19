@@ -1,60 +1,33 @@
 package com.group19.bookstore.models;
 
-import lombok.Data;
-import lombok.experimental.Accessors;
+import jakarta.persistence.*;
 
-@Data
-@Accessors(chain = true)
+@Entity
 public class Book {
-    private Integer id;
-    private String author;
-    private String genre;
-    private Double price;
-    private String publisher;
-    private Double rating;
+
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column
     private String title;
-    private Integer unitsSold;
-    private Double discount;
+    @Column
+    private String author;
+    @Column
+    private String publisher; //publisher discount
+    @Column
+    private String genre; //genre
+    @Column
+    private double rating; //rating
+    @Column
+    private double price; //publisher discount
+    @Column
+    private int unitsSold; //top sellers
 
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
-    public void setId (Integer id){
+    public void setId(int id) {
         this.id = id;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public double getPrice() {return price;}
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getPublisher() {
-        return publisher;
-    }
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
-
-    public Double getRating(){
-        return rating;
-    }
-    public void setRating(Double rating) {
-        this.rating = rating;
     }
 
     public String getTitle() {
@@ -64,14 +37,50 @@ public class Book {
         this.title = title;
     }
 
-    public int getunitsSold() {
+    public String getAuthor() {
+        return author;
+    }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getUnitsSold() {
         return unitsSold;
     }
-    public void setunitsSold(int unitsSold) {
+
+    public void setUnitsSold(int unitsSold) {
         this.unitsSold = unitsSold;
     }
 
-    public Double getDiscount() {return discount;}
-    public void setDiscount(Double discount) {this.discount = discount;}
 
 }
