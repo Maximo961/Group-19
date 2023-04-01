@@ -1,33 +1,36 @@
 package com.group19.bookstore.controller;
 
 import com.group19.bookstore.models.Book;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import com.group19.bookstore.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-@RequestMapping("/api/browse")
-public interface BrowserController {
+@RestController
+@RequestMapping ("/api/browse")
+public class BrowserController {
+    @Autowired
+    private BookService bookService;
 
-    @GetMapping(value = "/genre/{genre}", produces = APPLICATION_JSON_VALUE)
-    @ResponseBody
-    List<Book> getBooksByGenre(@PathVariable String genre);
+    @GetMapping ("/genre/{genre}")
+    public List<Book> getBooksByGenre(@PathVariable String genre){
+        return bookService.getBooksByGenre(genre);
+    }
 
-    @GetMapping(value = "/rating/{rating}", produces = APPLICATION_JSON_VALUE)
-    @ResponseBody
-    List<Book> getBooksByRating(@PathVariable Double rating);
+    @GetMapping("/top-sellers")
+    public List<Book> getTopSellers() {
+        return bookService.getTopSellers();
+    }
+    @GetMapping("/rating/{rating}")
+    public List<Book> getBooksByRatingAscending(@PathVariable double rating) {
+        return bookService.getBooksByRatingAscending(rating);
+    }
+    @PutMapping("/discount/{publisher}/{discountPercentage}")
+    public String discountBooksByPublisher(@PathVariable String publisher, @PathVariable double discountPercent) {
+        bookService.discountBooksByPublisher(publisher, discountPercent);
+        return "Discount applied successfully.";
+    }
 
-    @GetMapping(value = "/top-sellers", produces = APPLICATION_JSON_VALUE)
-    @ResponseBody
-    List<Book> getTopSellingBooks();
-
-    @PutMapping(value = "/discount", produces = APPLICATION_JSON_VALUE)
-    @ResponseBody
-    void discountPublisher(@RequestParam String genre, @RequestParam Double percent);
 }
