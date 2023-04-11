@@ -31,4 +31,9 @@ public class BookService {
             bookRepository.save(book);
         }
     }
+    
+    public List<Book> getBooksByPublisher(String publisher) {
+        return bookRepository.findBooksByPublisher(publisher);
+    }
+    
 }
