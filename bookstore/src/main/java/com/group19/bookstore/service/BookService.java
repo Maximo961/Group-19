@@ -24,7 +24,7 @@ public class BookService {
     }
 
     public void discountBooksByPublisher(String publisher, double discountPercent) {
-        List<Book> books = bookRepository.findByPublisher(publisher);
+        List<Book> books = bookRepository.findByDiscountPublisher(publisher);
         for (Book book : books) {
             double newPrice = book.getPrice() * (1 - discountPercent);
             book.setPrice(newPrice);
