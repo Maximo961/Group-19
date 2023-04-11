@@ -32,5 +32,10 @@ public class BrowserController {
         bookService.discountBooksByPublisher(publisher, discountPercent);
         return "Discount applied successfully.";
     }
+    
+    @GetMapping("/publisher/{publisher}")
+    public List<Book> getBooksByPublisher(@PathVariable String publisher){
+        return bookService.getBooksByPublisher(publisher);
+    }
 
 }
