@@ -11,7 +11,7 @@ public interface BookRepository  extends JpaRepository <Book, String> {
     //retrieve List of Books for a particular rating and higher
     List<Book> findByRatingGreaterThanEqualOrderByRatingAsc(double rating);
     //publisher discounts
-    List<Book> findByPublisher(String publisher);
+    List<Book> findByDiscountPublisher(String publisher);
     //retrieve the top 10 books by copies sold.
     List<Book> findTop10ByOrderByUnitsSoldDesc();
     
