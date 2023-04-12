@@ -12,11 +12,13 @@ import jakarta.persistence.Table;
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column
     private String name;
+    @Column
     private String biography;
+    @Column
     private String publisher;
 
     public Integer getId() {

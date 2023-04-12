@@ -5,19 +5,23 @@ USE `sql_bookinventory`;
 SET NAMES utf8 ;
 SET character_set_client = utf8mb4 ;
 
+-- mysql doesn't support booleans. so `is_admin` should be a string of 'true' or 'false'
 CREATE TABLE `users` (
+  `id`int NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `home_address` varchar(50) NOT NULL,
+  `is_admin` varchar(10) NOT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-INSERT INTO `users` VALUES ('bubblegum', 'passwword','Justin K Cromwelly','ADC@gmail.com','123 sw 80 st');
-INSERT INTO `users` VALUES ('astRAL', 'passwword','Justin A Cromwelly','AbC@gmail.com','124 sw 80 st');
-INSERT INTO `users` VALUES ('you', 'passwword','Justin B Cromwelly','ADf@gmail.com','125 sw 80 st');
-INSERT INTO `users` VALUES ('guy', 'passwword','Justin D Cromwelly','ADe@gmail.com','126 sw 80 st');
-INSERT INTO `users` VALUES ('two', 'passwword','Justin F Cromwelly','ADg@gmail.com','127 sw 80 st');
+INSERT INTO `users` VALUES (3001,'bubblegum', 'passwword','Justin K Cromwelly','ADC@gmail.com','123 sw 80 st','false');
+INSERT INTO `users` VALUES (3002,'astRAL', 'passwword','Justin A Cromwelly','AbC@gmail.com','124 sw 80 st','false');
+INSERT INTO `users` VALUES (3003,'you', 'passwword','Justin B Cromwelly','ADf@gmail.com','125 sw 80 st','false');
+INSERT INTO `users` VALUES (3004,'guy', 'passwword','Justin D Cromwelly','ADe@gmail.com','126 sw 80 st','false');
+INSERT INTO `users` VALUES (3005,'two', 'passwword','Justin F Cromwelly','ADg@gmail.com','127 sw 80 st','false');
+INSERT INTO `users` VALUES (3006,'amanda', 'password','Amanda Poulsen','amandapoulsen@gmail.com','127 sw 80 st','true');
 
 CREATE TABLE `books` (
   `id` int NOT NULL,
@@ -33,9 +37,9 @@ CREATE TABLE `books` (
 
   PRIMARY KEY (`isbn`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-INSERT INTO `books` VALUES (1,'9781974700301','Kaguya-sam Love is war','manga about love',9.99,'Aka Akasaka','Psychological,Romantic comedy,Slice of life','Viz Media','1998-11-11',100);
-INSERT INTO `books` VALUES (2,'9781974700321','Kaguya-sam Love is not war','manga about not war',9.99,'Aka Akasaka','Psychological,Romantic comedy,Slice of life','Viz Media','1998-12-12',100);
-INSERT INTO `books` VALUES (3,'9781974700331','Kaguya-sam Love is for sure war','manga about war',9.99,'Aka Akasaka','Psychological,Romantic comedy,Slice of life','Viz Media','1998-07-08',100);
+INSERT INTO `books` VALUES (2001,'9781974700301','Kaguya-sam Love is war','manga about love',9.99,'Aka Akasaka','Psychological,Romantic comedy,Slice of life','Viz Media','1998-11-11',100);
+INSERT INTO `books` VALUES (2002,'9781974700321','Kaguya-sam Love is not war','manga about not war',9.99,'Aka Akasaka','Psychological,Romantic comedy,Slice of life','Viz Media','1998-12-12',100);
+INSERT INTO `books` VALUES (2003,'9781974700331','Kaguya-sam Love is for sure war','manga about war',9.99,'Aka Akasaka','Psychological,Romantic comedy,Slice of life','Viz Media','1998-07-08',100);
 
 CREATE TABLE `credit_card` (
   `username` varchar(50) NOT NULL,
@@ -53,9 +57,11 @@ INSERT INTO `credit_card` VALUES ('guy','firered','1919191919191919','2019-12-12
 
 CREATE TABLE `author` (
   `id` int NOT NULL,
-  `name` varchar(100) NOT NULL
+  `name` varchar(100) NOT NULL,
+  `biography` varchar(100) NOT NULL,
+  `publisher` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-INSERT INTO `author` VALUES (1,'Aka Akasaka');
+INSERT INTO `author` VALUES (1001,'Aka Akasaka','Aka biography','Viz Media');
 
 
 

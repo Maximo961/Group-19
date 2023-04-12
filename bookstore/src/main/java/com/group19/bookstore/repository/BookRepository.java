@@ -32,4 +32,12 @@ public interface BookRepository extends JpaRepository<Book, String> {
      * @return a list of books written by the requested author
      */
     List<Book> findBooksByAuthor(String author);
+
+    /**
+     * Retrieves a book by its name.
+     *
+     * @param name the name of the book
+     * @return the book matching the name
+     */
+    Book findBookByName(String name);
 }
