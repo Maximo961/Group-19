@@ -14,6 +14,8 @@ public interface BookRepository extends JpaRepository<Book, String> {
     List<Book> findByPublisher(String publisher);
     //retrieve the top 10 books by copies sold.
     List<Book> findTop10ByOrderByUnitsSoldDesc();
+    //Check to see if publisher applied discount
+    List<Book> findBooksByPublisher(String publisher);
 
     /**
      * Retrieves a book by its isbn.
