@@ -18,7 +18,6 @@ public class BrowserController {
     public List<Book> getBooksByGenre(@PathVariable String genre){
         return bookService.getBooksByGenre(genre);
     }
-
     @GetMapping("/top-sellers")
     public List<Book> getTopSellers() {
         return bookService.getTopSellers();
@@ -32,10 +31,8 @@ public class BrowserController {
         bookService.discountBooksByPublisher(publisher, discountPercent);
         return "Discount applied successfully.";
     }
-    
     @GetMapping("/publisher/{publisher}")
     public List<Book> getBooksByPublisher(@PathVariable String publisher){
         return bookService.getBooksByPublisher(publisher);
     }
-
 }

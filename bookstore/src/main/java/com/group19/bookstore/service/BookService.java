@@ -24,16 +24,15 @@ public class BookService {
     }
 
     public void discountBooksByPublisher(String publisher, double discountPercent) {
-        List<Book> books = bookRepository.findByDiscountPublisher(publisher);
+        List<Book> books = bookRepository.findByPublisher(publisher);
         for (Book book : books) {
             double newPrice = book.getPrice() * (1 - discountPercent);
             book.setPrice(newPrice);
             bookRepository.save(book);
         }
     }
-    
+
     public List<Book> getBooksByPublisher(String publisher) {
         return bookRepository.findBooksByPublisher(publisher);
     }
-    
 }
