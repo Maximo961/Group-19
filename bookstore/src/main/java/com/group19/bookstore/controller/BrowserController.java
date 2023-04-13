@@ -27,7 +27,7 @@ public class BrowserController {
     public List<Book> getBooksByRatingAscending(@PathVariable double rating) {
         return bookService.getBooksByRatingAscending(rating);
     }
-    @PutMapping("/discount/{publisher}/{discountPercentage}")
+    @PutMapping("/discount/{publisher}/{discountPercent}")
     public String discountBooksByPublisher(@PathVariable String publisher, @PathVariable double discountPercent) {
         bookService.discountBooksByPublisher(publisher, discountPercent);
         return "Discount applied successfully.";
