@@ -1,0 +1,56 @@
+package com.group19.bookstore.models;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+@Entity
+public class Rating {
+    @Id
+    @Column
+    private String userID;
+    @Column
+    private long bookID;
+    @Column
+    private double rating;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
+    @Column(name = "timeStamp")
+    private String timeStamp;
+    public String getUserID(){
+
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+
+        this.userID = userID;
+    }
+    public long getBookID() {
+
+        return bookID;
+    }
+
+    public void setBookID(long bookID) {
+        this.bookID = bookID;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+}

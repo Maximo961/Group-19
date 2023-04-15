@@ -1,0 +1,14 @@
+com\group19\bookstore\repository\CommentsRepo.class
+com\group19\bookstore\dao\BookDao.class
+com\group19\bookstore\models\Comments.class
+com\group19\bookstore\models\Author.class
+com\group19\bookstore\controller\BookRatingAndCommentingController.class
+com\group19\bookstore\dao\impl\AuthorDaoImpl$2.class
+com\group19\bookstore\controller\BookDetailsController.class
+com\group19\bookstore\dao\impl\AuthorDaoImpl.class
+com\group19\bookstore\controller\impl\BookDetailsControllerImpl.class
+com\group19\bookstore\dao\AuthorDao.class
+com\group19\bookstore\models\Rating.class
+com\group19\bookstore\dao\impl\AuthorDaoImpl$1.class
+com\group19\bookstore\models\Book.class
+com\group19\bookstore\service\CommentAndRatingService.class

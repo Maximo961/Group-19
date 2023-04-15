@@ -2,14 +2,11 @@ package com.group19.bookstore.models;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-
 @Entity
-@Table(name="books")
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column
     private String author;
@@ -22,17 +19,13 @@ public class Book {
     @Column
     private Double rating;
     @Column
-    private String name;
-    @Column(name = "copies_sold")
+    private String title;
+    @Column
     private Integer unitsSold;
     @Column
     private Integer volume;
     @Column
     private String isbn;
-    @Column(name = "year_published")
-    private LocalDate yearPublished;
-    @Column
-    private String description;
 
     public Integer getId() {
         return id;
@@ -43,12 +36,12 @@ public class Book {
         return this;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public Book setName(String name) {
-        this.name = name;
+    public Book setTitle(String title) {
+        this.title = title;
         return this;
     }
 
@@ -121,24 +114,6 @@ public class Book {
 
     public Book setIsbn(String isbn) {
         this.isbn = isbn;
-        return this;
-    }
-
-    public LocalDate getYearPublished() {
-        return yearPublished;
-    }
-
-    public Book setYearPublished(LocalDate yearPublished) {
-        this.yearPublished = yearPublished;
-        return this;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Book setDescription(String description) {
-        this.description = description;
         return this;
     }
 }
