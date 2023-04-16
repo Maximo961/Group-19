@@ -1,6 +1,6 @@
 package com.group19.bookstore.models;
 
-// Creating an entity Employee
+// Creating a Credit Card object
 public class CreditCard {
 
     public CreditCard() {}
@@ -11,10 +11,7 @@ public class CreditCard {
     private String expiration;
     private String security_code;
 
-    // Parameterized Constructor
-    // to assign the values
-    // to the properties of
-    // the entity
+    // Constructor to add all properties to local variables
     public CreditCard(
             String username, String name,
             String credit_card_number, String expiration, String security_code)
@@ -26,8 +23,7 @@ public class CreditCard {
         this.security_code = security_code;
     }
 
-    // Overriding the toString method
-    // to find all the values
+    // Overriding the toString method to find all the values
     @Override
     public String toString()
     {

@@ -3,16 +3,13 @@ package com.group19.bookstore.models;
 import java.util.ArrayList;
 import java.util.List;
 
-// Class to store the list of
-// all the profiles in an
-// Array List
+// Class to store the list of all the profiles in an Array List
 public class ProfileManagement {
 
     private List<Profile> profileList;
     private List<CreditCard> creditCardList;
 
-    // Method to return the list
-    // of profiles
+    // Method to return the list of profiles
     public List<Profile> getProfileList()
     {
         if (profileList == null) {
@@ -30,8 +27,7 @@ public class ProfileManagement {
                 = profileList;
     }
 
-    // Method to return the list
-    // of credit cards
+    // Method to return the list of credit cards
     public List<CreditCard> getCreditCardList()
     {
         if (creditCardList == null) {

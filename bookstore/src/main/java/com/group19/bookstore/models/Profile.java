@@ -1,6 +1,6 @@
 package com.group19.bookstore.models;
 
-// Creating an entity Employee
+// Creating a Profile object
 public class Profile {
 
     public Profile() {}
@@ -11,10 +11,8 @@ public class Profile {
     private String email;
     private String homeAddress;
 
-    // Parameterized Constructor
-    // to assign the values
-    // to the properties of
-    // the entity
+
+    // Constructor to add all properties to local variables
     public Profile(
             String username, String password,
             String name, String email, String homeAddress)
@@ -26,8 +24,7 @@ public class Profile {
         this.homeAddress = homeAddress;
     }
 
-    // Overriding the toString method
-    // to find all the values
+    // Overriding the toString method to find all the values
     @Override
     public String toString()
     {

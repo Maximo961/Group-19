@@ -26,9 +26,7 @@ public class ProfileManagementController {
     @Autowired
     private ProfileManagementDaoImpl profileDao;
 
-    // Implementing a GET method
-    // to get the list of all
-    // the profiles
+    // Implementing a GET method to get the list of all the profiles
     @GetMapping(
             path = "",
             produces = "application/json")
@@ -46,9 +44,7 @@ public class ProfileManagementController {
                 .getProfile(username);
     }
 
-    // Create a POST method
-    // to add an profile
-    // to the list
+    // Create a POST method to add an profile
     @PostMapping(
             path = "",
             consumes = "application/json",
@@ -79,9 +75,7 @@ public class ProfileManagementController {
                 .build();
     }
 
-    // Create a PUT method
-    // to update a profile
-    // to the list
+    // Create a PUT method to update a profile
     @PutMapping(
             path = "/{username}",
             consumes = "application/json",
@@ -112,15 +106,14 @@ public class ProfileManagementController {
                 .body(location);
     }
 
+    // Create a GET method to get a credit card
     @GetMapping(path = "/{username}/creditcard", produces = "application/json")
     public CreditCard getCreditCard(@PathVariable("username") String username)
     {
         return profileDao.getCreditCard(username);
     }
 
-    // Create a POST method
-    // to add an profile
-    // to the list
+    // Create a POST method to add a credit card
     @PostMapping(
             path = "/{username}/creditcard",
             consumes = "application/json",
