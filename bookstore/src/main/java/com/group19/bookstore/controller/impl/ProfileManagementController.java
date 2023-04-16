@@ -6,15 +6,7 @@ import org.springframework.beans
 import org.springframework.http
         .ResponseEntity;
 import org.springframework.web.bind
-        .annotation.GetMapping;
-import org.springframework.web.bind
-        .annotation.PostMapping;
-import org.springframework.web.bind
-        .annotation.RequestBody;
-import org.springframework.web.bind
-        .annotation.RequestMapping;
-import org.springframework.web.bind
-        .annotation.RestController;
+        .annotation.*;
 import org.springframework.web.servlet
         .support.ServletUriComponentsBuilder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.group19.bookstore.dao.impl.ProfileManagementDaoImpl;
 import com.group19.bookstore.models.ProfileManagement;
 import com.group19.bookstore.models.Profile;
+import com.group19.bookstore.models.CreditCard;
 
 // Creating the REST controller
 @RestController
@@ -64,8 +57,7 @@ public class ProfileManagementController {
     public ResponseEntity<Object> addProfile(
             @RequestBody Profile profile)
     {
-        profileDao
-                .addProfile(profile);
+        boolean addedProfile = profileDao.addProfile(profile);
 
         URI location
                 = ServletUriComponentsBuilder
@@ -74,6 +66,85 @@ public class ProfileManagementController {
                 .buildAndExpand(
                         profile.getUsername())
                 .toUri();
+
+        if (addedProfile == false)
+        {
+            return ResponseEntity
+                    .badRequest()
+                    .body("Profile could not be added. Profile may already exist.");
+        }
+
+        return ResponseEntity
+                .created(location)
+                .build();
+    }
+
+    // Create a PUT method
+    // to update a profile
+    // to the list
+    @PutMapping(
+            path = "/{username}",
+            consumes = "application/json",
+            produces = "application/json")
+
+    public ResponseEntity<Object> updateProfile(
+            @RequestBody Profile profile, @PathVariable("username") String username)
+    {
+        boolean updatedProfile = profileDao.updateProfile(username, profile);
+
+        URI location
+                = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{username}")
+                .buildAndExpand(
+                        profile.getUsername())
+                .toUri();
+
+        if (updatedProfile == false)
+        {
+            return ResponseEntity
+                    .badRequest()
+                    .body("Profile could not be updated. Profile may not exist.");
+        }
+
+        return ResponseEntity
+                .ok()
+                .body(location);
+    }
+
+    @GetMapping(path = "/{username}/creditcard", produces = "application/json")
+    public CreditCard getCreditCard(@PathVariable("username") String username)
+    {
+        return profileDao.getCreditCard(username);
+    }
+
+    // Create a POST method
+    // to add an profile
+    // to the list
+    @PostMapping(
+            path = "/{username}/creditcard",
+            consumes = "application/json",
+            produces = "application/json")
+
+    public ResponseEntity<Object> addCreditCard(
+            @PathVariable("username") String username, @RequestBody CreditCard creditCard)
+    {
+        boolean addedCreditCard = profileDao.addCreditCard(creditCard);
+
+        URI location
+                = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("")
+                .buildAndExpand(
+                        creditCard.getUsername())
+                .toUri();
+
+        if (addedCreditCard == false)
+        {
+            return ResponseEntity
+                    .badRequest()
+                    .body("Credit Card could not be added. Credit Card may already exist.");
+        }
 
         return ResponseEntity
                 .created(location)
